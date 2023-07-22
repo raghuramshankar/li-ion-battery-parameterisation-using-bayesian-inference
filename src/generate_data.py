@@ -5,6 +5,7 @@ import os
 import numpy as np
 import pandas as pd
 
+# add base folder path
 if "__ipython__":
     sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(os.getcwd()))))
 
@@ -14,7 +15,6 @@ def current_func(a, omega):
     def current(t):
         # parameterize upto 3C current
         return a + 5 * a * pybamm.sin(2 * np.pi * omega * t)
-        # return a * pybamm.sin(2 * np.pi * omega * t)
 
     return current
 
@@ -41,11 +41,11 @@ simulation_time = 3600
 npts = int(50 * simulation_time * omega)
 t_eval = np.linspace(0, simulation_time, npts)
 
-# save solution
+# solve the model
 solution = sim.solve(t_eval)
 solution.plot(
     [
-        "Current [A]",
+        "Time [s]" "Current [A]",
         "R0 [Ohm]",
         "R1 [Ohm]",
         "C1 [F]",
@@ -54,8 +54,11 @@ solution.plot(
         "Discharge capacity [A.h]",
     ]
 )
+
+# create solution variables by creating a QuickPlot object
 quick_plot = pybamm.QuickPlot(solution)
 
+# save data
 solution.save_data(
     "../data/discharge_data.csv", list(solution.data.keys()), to_format="csv"
 )
