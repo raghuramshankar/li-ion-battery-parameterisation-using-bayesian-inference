@@ -45,7 +45,8 @@ t_eval = np.linspace(0, simulation_time, npts)
 solution = sim.solve(t_eval)
 solution.plot(
     [
-        "Time [s]" "Current [A]",
+        "Time [s]",
+        "Current [A]",
         "R0 [Ohm]",
         "R1 [Ohm]",
         "C1 [F]",
