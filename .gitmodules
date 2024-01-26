@@ -1,3 +1,0 @@
-[submodule "parallel_gps"]
-	path = parallel_gps
-	url = git@github.com:raghuramshankar/parallel-gps.git

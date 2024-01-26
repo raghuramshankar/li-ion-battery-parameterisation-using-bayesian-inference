@@ -1,5 +1,5 @@
 # %%
 import pandas as pd
-from parallel_gps.pssgp.model import StateSpaceGP
+import bayesnewton
 
 df = pd.read_csv("data/discharge_data.csv")
